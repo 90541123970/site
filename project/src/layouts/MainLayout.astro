@@ -1,0 +1,84 @@
+---
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-7">
+            <div>
+              <a href="/" class="flex items-center py-4">
+                <span class="font-semibold text-gray-500 text-lg">Portfolio</span>
+              </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
+              <a href="/" class="py-4 px-2 text-gray-500 hover:text-gray-900">Home</a>
+              <a href="/about" class="py-4 px-2 text-gray-500 hover:text-gray-900">About</a>
+              <a href="/projects" class="py-4 px-2 text-gray-500 hover:text-gray-900">Projects</a>
+              <a href="/blog" class="py-4 px-2 text-gray-500 hover:text-gray-900">Blog</a>
+              <a href="/contact" class="py-4 px-2 text-gray-500 hover:text-gray-900">Contact</a>
+            </div>
+          </div>
+          
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+              <svg class="w-6 h-6 text-gray-500 hover:text-gray-900"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile menu -->
+      <div class="hidden mobile-menu md:hidden">
+        <ul class="px-4">
+          <li><a href="/" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a></li>
+          <li><a href="/about" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a></li>
+          <li><a href="/projects" class="block py-2 px-4 text-sm hover:bg-gray-100">Projects</a></li>
+          <li><a href="/blog" class="block py-2 px-4 text-sm hover:bg-gray-100">Blog</a></li>
+          <li><a href="/contact" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <slot />
+    </main>
+
+    <footer class="bg-white shadow-lg mt-8">
+      <div class="max-w-6xl mx-auto px-4 py-6">
+        <p class="text-center text-gray-500">© 2024 Portfolio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.querySelector("button.mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      if (btn && menu) {
+        btn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+        
+      }
+    </script>
+  </body>
+</html>

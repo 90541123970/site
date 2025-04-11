@@ -1,0 +1,68 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Posts data
+const posts = [
+  {
+    title: "Getting Started with Astro",
+    date: "March 15, 2024",
+    content: `
+Astro is an amazing static site generator for modern web development.
+
+### Why Astro?
+
+- Super fast performance
+- Island architecture
+- Supports multiple frameworks
+
+Let’s build something amazing together!
+    `,
+    slug: "getting-started-with-astro"
+  },
+  {
+    title: "Web Development Best Practices",
+    date: "March 10, 2024",
+    content: `
+Clean, maintainable code is crucial in web development.
+
+### Tips:
+- Use semantic HTML
+- Keep components small and reusable
+- Write meaningful commit messages
+    `,
+    slug: "web-development-best-practices"
+  },
+  {
+    title: "The Future of Frontend Development",
+    date: "March 5, 2024",
+    content: `
+The web is evolving quickly. Here's what’s next in frontend:
+
+### Trends:
+- Astro, Svelte, Qwik
+- AI-assisted tools
+- Enhanced accessibility features
+    `,
+    slug: "future-of-frontend-development"
+  }
+];
+
+// Required for dynamic routing
+export async function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// Get the post from Astro.props
+const { post } = Astro.props;
+---
+
+<MainLayout title={post.title}>
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-2">{post.title}</h1>
+    <p class="text-gray-500 text-sm mb-6">{post.date}</p>
+    <div class="prose prose-lg text-gray-800" set:html={post.content} />
+  </main>
+</MainLayout>

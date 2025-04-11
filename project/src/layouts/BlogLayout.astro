@@ -1,0 +1,12 @@
+---
+const { title, date } = Astro.props;
+import MainLayout from './MainLayout.astro';
+---
+
+<MainLayout title={title}>
+  <article class="prose lg:prose-xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4">{title}</h1>
+    {date && <p class="text-gray-500 mb-8">{date}</p>}
+    <slot />
+  </article>
+</MainLayout>

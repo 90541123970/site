@@ -1,0 +1,15 @@
+/* src/styles/global.css */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+  }
+  
+  a.custom-link {
+    text-decoration: underline;
+    color: #2563eb;
+  }
+  
+  section {
+    margin-bottom: 4rem;
+  }
+  

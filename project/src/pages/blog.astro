@@ -1,0 +1,47 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const posts = [
+  {
+    title: "Getting Started with Astro",
+    date: "March 15, 2024",
+    excerpt: "Astro is a powerful static site generator that helps you build fast, modern websites. In this post, I’ll walk you through setting up your first Astro project, creating components, and deploying it.",
+    slug: "getting-started-with-astro"
+  },
+  {
+    title: "Web Development Best Practices",
+    date: "March 10, 2024",
+    excerpt: "As a developer, writing clean and maintainable code is essential. This post covers coding standards, file organization, component reusability, and accessibility tips for frontend development.",
+    slug: "web-development-best-practices"
+  },
+  {
+    title: "The Future of Frontend Development",
+    date: "March 5, 2024",
+    excerpt: "Frontend development is evolving fast! From frameworks like Astro and Next.js to AI-assisted design tools and WebAssembly, this post explores what's next in the frontend world.",
+    slug: "future-of-frontend-development"
+  }
+];
+---
+
+<MainLayout title="Blog">
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Blog Posts</h1>
+    
+    <div class="space-y-10">
+      {posts.map(post => (
+        <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-2">
+            <a href={`/blog/${post.slug}`} class="hover:text-blue-600">
+              {post.title}
+            </a>
+          </h2>
+          <p class="text-sm text-gray-500">{post.date}</p>
+          <p class="text-gray-700 mt-3">{post.excerpt}</p>
+          <a href={`/blog/${post.slug}`} class="inline-block mt-4 text-blue-600 hover:underline font-medium">
+            Read more →
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</MainLayout>
